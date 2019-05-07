@@ -1,13 +1,17 @@
 package com.upala.wong.controller;
 
+import com.upala.wong.service.AnalysisFileService;
 import com.upala.wong.utils.CheckUtils;
 import com.upala.wong.utils.FileUtils;
+import com.upala.wong.utils.PathConf;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -27,6 +31,9 @@ import java.util.Map;
 public class FileController
 {
 
+    @Autowired
+    private AnalysisFileService analysisFileService;
+
     /**
      * 上传文件
      * @param file 上传的文件
@@ -38,6 +45,9 @@ public class FileController
         Map<String, String> res = new HashMap<>();
         res.put("status", "successful");
         String filename = file.getOriginalFilename();
+        int index = filename.lastIndexOf("\\.");
+        String beforeFileName = filename.substring(0, index);
+        String lastFileName = filename.substring(index);
         String[] split = filename.split("\\.");
         if (file.getSize() <= 0)
         {
@@ -55,6 +65,10 @@ public class FileController
             InputStream inputStream = file.getInputStream();
             res = FileUtils.readFile(inputStream, split[1]);
             res.put("title", split[0]);
+            String uuid = CheckUtils.getUUID();
+            // 生成文件名称
+            String name = uuid + "_"+filename;
+            file.transferTo(new File(PathConf.getPath()+name));
         } catch (IOException e)
         {
             log.error("获取文件输入流失败！", e);

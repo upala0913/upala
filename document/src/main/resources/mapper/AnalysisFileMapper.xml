@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.upala.wong.mapper.AnalysisFileMapper" >
+
+    <sql id="key" >
+        <trim suffixOverrides="," >
+            <if test="id != null" >id,</if>
+            <if test="file_uuid != null" >file_uuid,</if>
+            <if test="file_type != null" >file_type,</if>
+            <if test="file_type_code != null" >file_type_code,</if>
+            <if test="file_upload_date != null" >file_upload_date,</if>
+            <if test="file_upload_name != null" >file_upload_name</if>
+        </trim>
+    </sql>
+    <sql id="value" >
+        <trim suffixOverrides="," >
+            <if test="id != null" >#{id},</if>
+            <if test="file_uuid != null" >#{file_uuid},</if>
+            <if test="file_type != null" >#{file_type},</if>
+            <if test="file_type_code != null" >#{file_type_code},</if>
+            <if test="file_upload_date != null" >#{file_upload_date},</if>
+            <if test="file_upload_name != null" >#{file_upload_name},</if>
+        </trim>
+    </sql>
+    <!-- 插入数据 -->
+    <insert id="insertFile" parameterMap="analysisFile" >
+        INSERT INTO analysis_file (<include refid="key" />) VALUES (<include refid="value" />)
+    </insert>
+
+</mapper>

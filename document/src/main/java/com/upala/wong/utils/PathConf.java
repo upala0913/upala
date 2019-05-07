@@ -30,4 +30,9 @@ public class PathConf
         return "file:"+split[1];
     }
 
+    public static String getPath ()
+    {
+        return PATH;
+    }
+
 }
