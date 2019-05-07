@@ -19,7 +19,6 @@ public class WebInterceptor implements WebMvcConfigurer
 
     /**
      * 页面的跳转
-     *
      * @param registry 参数
      */
     @Override
