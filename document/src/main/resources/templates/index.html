@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/easyui/themes/default/easyui.css" type="text/css">
+    <link rel="stylesheet" href="/static/easyui/themes/icon.css" type="text/css">
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
+</head>
+<body>
+<div class="content">
+    <div class="title">文件解析平台</div>
+    <div class="file">
+        <div class="file_select">
+            <div class="file-select" >
+                <form class="ff" enctype="multipart/form-data">
+                    <label for="file" class="btn btn-default">选择文件</label>
+                    <input id="file" type="file" name="file" style="display: none">
+                </form>
+                <a href="javascript:;" class="btn btn-default submit">上传</a>
+            </div>
+            <div class="file-operate">
+                <a href="javascript:;" class="btn btn-default file-edit" id="file-edit">
+                    <i class="glyphicon glyphicon-edit"></i>&nbsp;编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" class="btn btn-default file-save" id="file-save">
+                    <i class="glyphicon glyphicon-save"></i>&nbsp;保存</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" class="btn btn-default file-export" download="#" id="file-export">
+                    <i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <div class="file_content">
+            <div class="file-content-title">文件标题：<i class="file-title"></i></div>
+            <label for="textFile">文件内容</label>
+            <textarea name="textFile" id="textFile" cols="129" rows="32" readonly="readonly">
+                无文件
+            </textarea>
+        </div>
+    </div>
+    <div class="footer">
+        &copy;版权归upala所有
+    </div>
+</div>
+</body>
+</html>
